@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Liste des gens</title>
+</head>
+<style>
+    table {
+        border-collapse: collapse;
+    }
+
+    th {
+        background-color: #4CAF50;
+        color: white;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    th, td {
+        border-bottom: 1px solid #ddd;
+        padding: 10px 5px;
+        text-align: left;
+    }
+</style>
+<body>
+<h3>La personne</h3>
+<a href="/people">Ajouter un nouveau gens!</a>
+<br><br>
+<table>
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Nom</th>
+        <th>Prenom</th>
+        <th>age</th>
+        <th>Pays</th>
+        <th></th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="people : ${peoples}">
+        <td th:text="${people.id}">id</td>
+        <td th:text="${people.firstName}">name</td>
+        <td th:text="${people.lastName}">capacity</td>
+        <td th:text="${people.age}">country</td>
+        <td th:text="${people.country}">country</td>
+        <td><a th:href="@{/people(id=${people.id})}">Modifier</a></td>
+        <td><a th:href="@{/people/delete(id=${people.id})}">Supprimer</a></td>
+    </tr>
+    </tbody>
+</table>
+<br>
+<a href="/">Retourner à l'index des gens</a>
+</body>
+</html>
